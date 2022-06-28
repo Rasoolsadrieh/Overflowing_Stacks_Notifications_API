@@ -1,9 +1,13 @@
 package com.revature.overflowingStacks.user;
 
 import com.revature.overflowingStacks.util.interfaces.Serviceable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
+@Transactional
 public class UserServices implements Serviceable<User> {
     @Override
     public User create(User newObject) {
@@ -33,5 +37,8 @@ public class UserServices implements Serviceable<User> {
     @Override
     public boolean validateInput(User object) {
         return false;
+    }
+
+    public User authenticateUser(String username, String password) { return null;
     }
 }

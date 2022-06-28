@@ -1,6 +1,7 @@
 package com.revature.overflowingStacks.notification;
 
 
+import com.revature.overflowingStacks.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,5 +23,5 @@ public class Notification {
     private String date;
     @ManyToOne(optional = false)
     @JoinColumn(name = "recipient_email", referencedColumnName = "email")
-    private String email;
+    private User email;
 }

@@ -1,5 +1,6 @@
 package com.revature.overflowingStacks.profile;
 
+import com.revature.overflowingStacks.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,7 +22,7 @@ public class Profile {
     private String lname;
     @OneToOne(optional = false)
     @JoinColumn(name = "email", referencedColumnName = "email")
-    private String email;
+    private User email;
     private int balance;
     @Column(name = "account-name")
     private String accountName;

@@ -9,14 +9,14 @@ spring:
 
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: ${DBURL}
-    username: ${DBUSER}
-    password: ${DBPASS}
+    url: jdbc:sqlserver://notificationtestserver.database.windows.net:1433;database=Notification_Test_Server;encrypt=true;
+    username: mmoord
+    password: Foxtrot12
   jpa:
     database-platform: org.hibernate.dialect.SQLServerDialect
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
 
 # Default actuator gives us the health endpoint, we will add a few others
 management:
