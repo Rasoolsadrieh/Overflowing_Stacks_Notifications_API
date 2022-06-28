@@ -9,8 +9,6 @@ public class OverflowingStacksApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(OverflowingStacksApplication.class, args);
-		NotificationServices notificationServices = new NotificationServices();
-		notificationServices.sendEmailTest();
 	}
 
 }

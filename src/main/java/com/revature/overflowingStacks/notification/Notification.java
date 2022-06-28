@@ -7,13 +7,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "notifications")
-public class Notification {
+public class Notification{
     @Id
     @Column(name = "notification_id")
     private String notificationId;

@@ -1,4 +1,8 @@
 package com.revature.overflowingStacks.notification;
+import com.revature.overflowingStacks.user.User;
+import com.revature.overflowingStacks.user.UserDao;
+import com.revature.overflowingStacks.util.interfaces.Serviceable;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -9,7 +13,16 @@ import javax.activation.*;
 
 @Service
 @Transactional
-public class NotificationServices {
+public class NotificationServices implements Serviceable<Notification> {
+
+    private final NotificationDao notificationDao;
+    private final UserDao userDao;
+
+    @Autowired
+    public NotificationServices(NotificationDao notificationDao, UserDao userDao) {
+        this.notificationDao = notificationDao;
+        this.userDao = userDao;
+    }
 
     public void sendEmailTest() {
         String from = "overflowing-stacks@outlook.com";
@@ -22,10 +35,6 @@ public class NotificationServices {
         prop.put("mail.smtp.port", "587");
         prop.put("mail.smtp.ssl.trust", "smtp-mail.outlook.com");
         prop.put("mail.smtp.ssl.protocols", "TLSv1.2");
-
-
-
-
 
         Session session = Session.getInstance(prop, new Authenticator() {
             @Override
@@ -59,4 +68,32 @@ public class NotificationServices {
             mex.printStackTrace();
         }
     }
+
+
+    @Override
+    public Notification create(Notification newNotification){ return notificationDao.save(newNotification);}
+
+    @Override
+    public Notification update(Notification updatedNotification) { return null;}
+
+    @Override
+    public Notification readById(String movieId) {return null;}
+
+    @Override
+    public List<Notification> readAll() {return null;}
+
+    public List<Notification> readByEmail(User email) {return notificationDao.notificationHistory(email);}
+
+    @Override
+    public boolean delete(String notiId) {
+        notificationDao.deleteById(notiId);
+        return true;
+    }
+
+    @Override
+    public boolean validateInput(Notification notification){return false;}
+
+
+
+
 }
